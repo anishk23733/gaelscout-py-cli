@@ -45,6 +45,8 @@ while choice != 'exit':
         print("add <team-number> (adds team number to the database to be analyzed)")
         print("analyze <team-number> (gives data on team)")
         print("open <scouting or rankings> (opens excel files)")
+        print("battle <red1> <red2> <blue1> <blue2> (calculates chance of winning)")
+        print("exit (closes CLI)")
         print("")
 
     elif choice.startswith("exit") == True:
