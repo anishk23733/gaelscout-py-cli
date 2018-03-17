@@ -55,7 +55,7 @@ def update(url):
     writer = pd.ExcelWriter("data/data.xlsx")
 
     for teamNumber in teamNums:
-        scores = Raschietto.from_url("https://vexdb.io/teams/view/"+teamNumber+"?t=rankings")
+        scores = Raschietto.from_url("https://vexdb.io/teams/view/{}?t=rankings".format(teamNumber))
         eventPointer = Matcher('.event')
         eventsList = eventPointer(scores, multiple=True)
         try: allEvents.append(eventsList[1])
@@ -68,6 +68,8 @@ def update(url):
         try: allRanks.append(ranksList[1])
         except: allRanks.append("New Team")
         ranksList.remove(ranksList[0])
+        ranksList = list(map(int, ranksList))
+
         # teamRanksDict[teamNumber] = ranksList
 
         wltPointer = Matcher('.wlt')
@@ -89,6 +91,8 @@ def update(url):
         try: allMAXSCORES.append(maxScoreList[1])
         except: allMAXSCORES.append("New Team")
         maxScoreList.remove(maxScoreList[0])
+        maxScoreList = list(map(int, maxScoreList))
+
         # teamMAXSCORESDict[teamNumber] = maxScoreList
 
         OPRPointer = Matcher('.opr')
@@ -96,6 +100,8 @@ def update(url):
         try: allOPRS.append(OPRList[1])
         except: allOPRS.append("New Team")
         OPRList.remove(OPRList[0])
+        OPRList = list(map(float, OPRList))
+
         # teamOPRSDict[teamNumber] = OPRList
 
 

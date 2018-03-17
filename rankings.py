@@ -23,9 +23,10 @@ def rankings(url:str=''):
                 print("Invalid URL. Try updating again or try 'rankings <vexdb>'.")
                 return 0
             url = 'https://vexdb.io/events/view/' + url+'?t=rankings'
+            with open('data/urls.txt', 'a+') as filehandle2:
+                filehandle2.write("\n"+url)
 
     page = Raschietto.from_url(url)
-    print(url)
     rankNums = Matcher('.rank')
     rankNums = rankNums(page, multiple=True)
     try: rankNums.remove("Rank")
