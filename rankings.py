@@ -115,3 +115,37 @@ def rankings(url:str=''):
     elif platform == "win32":
         try: os.system("open -a 'Microsoft Excel.exe' 'data/rankings.xlsx'")
         except: print("Failed to open file. Please open it on your own.")
+
+def collectRanking(teamNum:str, url:str=''):
+
+    if(url != ''):
+        pass
+    else:
+        with open('data/urls.txt', 'r') as filehandle:
+            url = filehandle.read()
+            url = url.replace("https://www.robotevents.com/robot-competitions/vex-robotics-competition/", '')
+            url = url.replace(".html", '')
+            url = url.replace("\n", '')
+            if url.startswith("RE-VRC") == True:
+                pass
+            else:
+                print("Invalid URL. Try updating again or try 'rankings <vexdb>'.")
+                return 0
+            url = 'https://vexdb.io/events/view/' + url+'?t=rankings'
+            with open('data/urls.txt', 'a+') as filehandle2:
+                filehandle2.write("\n"+url)
+
+    page = Raschietto.from_url(url)
+    rankNums = Matcher('.rank')
+    rankNums = rankNums(page, multiple=True)
+    try: rankNums.remove("Rank")
+    except: pass
+
+    teamNums = Matcher('.number')
+    teamNums = teamNums(page, multiple=True)
+    try: teamNums.remove("Number")
+    except: pass
+
+    index = teamNums.index(teamNum)
+    rank = rankNums[index]
+    return rank

@@ -15,9 +15,9 @@ def battle(team1, team2, team3, team4):
         team1Stats = pd.read_pickle(dir1)
         # print(teamStats.describe())
         try:
-            avgopr1 = team1Stats["OPR"][0:5].mean()
-            avgscore1 = team1Stats["Max Score"][0:5].mean()
-            avgrank1 = team1Stats["Ranks"][0:5].mean()
+            avgopr1 = team1Stats["OPR"][0:6].mean()
+            avgscore1 = team1Stats["Max Score"][0:6].mean()
+            avgrank1 = team1Stats["Ranks"][0:6].mean()
         except:
             avgopr1 = team1Stats["OPR"].mean()
             avgscore1 = team1Stats["Max Score"].mean()
@@ -32,9 +32,9 @@ def battle(team1, team2, team3, team4):
         team2Stats = pd.read_pickle(dir2)
         # print(teamStats.describe())
         try:
-            avgopr2 = team2Stats["OPR"][0:5].mean()
-            avgscore2 = team2Stats["Max Score"][0:5].mean()
-            avgrank2 = team2Stats["Ranks"][0:5].mean()
+            avgopr2 = team2Stats["OPR"][0:6].mean()
+            avgscore2 = team2Stats["Max Score"][0:6].mean()
+            avgrank2 = team2Stats["Ranks"][0:6].mean()
         except:
             avgopr2 = team2Stats["OPR"].mean()
             avgscore2 = team2Stats["Max Score"].mean()
@@ -49,9 +49,9 @@ def battle(team1, team2, team3, team4):
         team3Stats = pd.read_pickle(dir3)
         # print(teamStats.describe())
         try:
-            avgopr3 = team3Stats["OPR"][0:5].mean()
-            avgscore3 = team3Stats["Max Score"][0:5].mean()
-            avgrank3 = team3Stats["Ranks"][0:5].mean()
+            avgopr3 = team3Stats["OPR"][0:6].mean()
+            avgscore3 = team3Stats["Max Score"][0:6].mean()
+            avgrank3 = team3Stats["Ranks"][0:6].mean()
         except:
             avgopr3 = team3Stats["OPR"].mean()
             avgscore3 = team3Stats["Max Score"].mean()

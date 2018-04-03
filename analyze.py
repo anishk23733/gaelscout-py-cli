@@ -9,36 +9,54 @@ def collect(teamNum):
     scores = Raschietto.from_url("https://vexdb.io/teams/view/{}?t=rankings".format(teamNum))
     eventPointer = Matcher('.event')
     eventsList = eventPointer(scores, multiple=True)
-    eventsList.remove(eventsList[0])
+    try:
+        eventsList.remove(eventsList[0])
+    except:
+        eventsList.append("New Team")
     # teamEventsDict[teamNumber] = eventsList
 
     rankPointer = Matcher('.rank')
     ranksList = rankPointer(scores, multiple=True)
-    ranksList.remove(ranksList[0])
+    try:
+        ranksList.remove(ranksList[0])
+    except:
+        pass
     ranksList = list(map(int, ranksList))
 
     # teamRanksDict[teamNumber] = ranksList
 
     wltPointer = Matcher('.wlt')
     wltList = wltPointer(scores, multiple=True)
-    wltList.remove(wltList[0])
+    try:
+        wltList.remove(wltList[0])
+    except:
+        wltList.append("New Team")
     # teamWLTsDict[teamNumber] = eventsList
 
     WPSPPointer = Matcher('.wpsp')
     WPSPList = WPSPPointer(scores, multiple=True)
-    WPSPList.remove(WPSPList[0])
+    try:
+        WPSPList.remove(WPSPList[0])
+    except:
+        WPSPList.append("New Team")
     # teamWPSPsDict[teamNumber] = WPSPList
 
     maxScorePointer = Matcher('.max_score')
     maxScoreList = maxScorePointer(scores, multiple=True)
-    maxScoreList.remove(maxScoreList[0])
-    maxScoreList = list(map(int, maxScoreList))
+    try:
+        maxScoreList.remove(maxScoreList[0])
+        maxScoreList = list(map(int, maxScoreList))
+    except:
+        pass
     # teamMAXSCORESDict[teamNumber] = maxScoreList
 
     OPRPointer = Matcher('.opr')
     OPRList = OPRPointer(scores, multiple=True)
-    OPRList.remove(OPRList[0])
-    OPRList = list(map(float, OPRList))
+    try:
+        OPRList.remove(OPRList[0])
+        OPRList = list(map(float, OPRList))
+    except:
+        pass
     # teamOPRSDict[teamNumber] = OPRList
 
 
@@ -58,10 +76,10 @@ def analyze(teamNum):
         # print(teamStats.describe())
         print("This data is based off of {}'s last 5 tournaments.".format(teamNum))
         try:
-            print("Average OPR: {}".format(str(teamStats["OPR"][0:5].mean())))
-            print("Average Max Score: {}".format(str(teamStats["Max Score"][0:5].mean())))
-            print("Average Rank: {}".format(str(teamStats["Ranks"][0:5].mean())))
-            print("Best Rank: {}".format(str(teamStats["Ranks"][0:5].min())))
+            print("Average OPR: {}".format(str(teamStats["OPR"][0:6].mean())))
+            print("Average Max Score: {}".format(str(teamStats["Max Score"][0:6].mean())))
+            print("Average Rank: {}".format(str(teamStats["Ranks"][0:6].mean())))
+            print("Best Rank: {}".format(str(teamStats["Ranks"][0:6].min())))
         except:
             print("Average OPR: {}".format(str(teamStats["OPR"].mean())))
             print("Average Max Score: {}".format(str(teamStats["Max Score"].mean())))

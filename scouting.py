@@ -60,37 +60,41 @@ def update(url):
         eventsList = eventPointer(scores, multiple=True)
         try: allEvents.append(eventsList[1])
         except: allEvents.append("New Team")
-        eventsList.remove(eventsList[0])
+        try: eventsList.remove(eventsList[0])
+        except: pass
         # teamEventsDict[teamNumber] = eventsList
 
         rankPointer = Matcher('.rank')
         ranksList = rankPointer(scores, multiple=True)
         try: allRanks.append(ranksList[1])
         except: allRanks.append("New Team")
-        ranksList.remove(ranksList[0])
+        try: ranksList.remove(ranksList[0])
+        except: pass
         ranksList = list(map(int, ranksList))
-
         # teamRanksDict[teamNumber] = ranksList
 
         wltPointer = Matcher('.wlt')
         wltList = wltPointer(scores, multiple=True)
         try: allWLTs.append(wltList[1])
         except: allWLTs.append("New Team")
-        wltList.remove(wltList[0])
+        try: wltList.remove(wltList[0])
+        except: pass
         # teamWLTsDict[teamNumber] = eventsList
 
         WPSPPointer = Matcher('.wpsp')
         WPSPList = WPSPPointer(scores, multiple=True)
         try: allWPSPs.append(WPSPList[1])
         except: allWPSPs.append("New Team")
-        WPSPList.remove(WPSPList[0])
+        try: WPSPList.remove(WPSPList[0])
+        except: pass
         # teamWPSPsDict[teamNumber] = WPSPList
 
         maxScorePointer = Matcher('.max_score')
         maxScoreList = maxScorePointer(scores, multiple=True)
         try: allMAXSCORES.append(maxScoreList[1])
         except: allMAXSCORES.append("New Team")
-        maxScoreList.remove(maxScoreList[0])
+        try: maxScoreList.remove(maxScoreList[0])
+        except: pass
         maxScoreList = list(map(int, maxScoreList))
 
         # teamMAXSCORESDict[teamNumber] = maxScoreList
@@ -99,7 +103,8 @@ def update(url):
         OPRList = OPRPointer(scores, multiple=True)
         try: allOPRS.append(OPRList[1])
         except: allOPRS.append("New Team")
-        OPRList.remove(OPRList[0])
+        try: OPRList.remove(OPRList[0])
+        except: pass
         OPRList = list(map(float, OPRList))
 
         # teamOPRSDict[teamNumber] = OPRList

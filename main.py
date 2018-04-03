@@ -29,10 +29,10 @@ while choice != 'exit':
             page = Raschietto.from_url(robotevents)
             title = Matcher('.panel-title')
             title = title(page, multiple=False)
+            status = title
         except:
             print("No Robot Events URL Entered. To fix this issue, run 'update <url>'")
 
-    status = title
     choice = input('GaelScout: '+status+'$ ')
 
     if choice.startswith("help") == True:
