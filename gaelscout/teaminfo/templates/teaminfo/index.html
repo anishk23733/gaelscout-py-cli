@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Team Index</title>
+  <link rel="shortcut icon" href="../../../static/gael.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet">
+  <link rel = "stylesheet" type = "text/css" href = "../../../static/main.css" />
+
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper red">
+      <div class="container">
+        <a class="brand-logo" href="{% url 'sri:index' %}">
+          GAELSCOUT</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li ><a class = "waves-effect waves-light" href="{% url 'sri:index' %}">Home</a></li>
+        <li ><a class = "waves-effect waves-light" href="{% url 'sri:index' %}">SRI</a></li>
+        <li><a class = "waves-effect waves-light" href="{% url 'teaminfo:index' %}">Team Index</a></li>
+        <li><a class = "waves-effect waves-light" href="{% url 'teaminfo:index' %}">Predictions</a></li>
+        <li><a class = "waves-effect waves-light" href="{% url 'teaminfo:division' %}">Division</a></li>
+      </ul>
+    </div>
+      <div class="nav-wrapper">
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <h1><i>In The Zone</i> Team Index</h1>
+
+  <!-- <div style="display: inline-block;">
+    <h7>Filters:</h7>
+    <form method="POST" class="white-text waves-effect waves-light btn red lighten-1">{% csrf_token %}
+      <select name = "filter">
+      <option value="by_opr+">OPR++</option>
+      </select>
+      <input type="submit"  value="OPR +:-"/>
+    </form>
+    <form method="POST" class="white-text waves-effect waves-light btn red lighten-1">{% csrf_token %}
+      <select name = "filter">
+      <option value="by_opr-">OPR--</option>
+      </select>
+      <input type="submit"  value="OPR -:+"/>
+    </form>
+    <form method="POST" class="white-text waves-effect waves-light btn red lighten-1">{% csrf_token %}
+      <select name = "filter">
+      <option value="by_mscore+">Max Score++</option>
+      </select>
+      <input type="submit"  value="Max Score +:-"/>
+    </form>
+    <form method="POST" class="white-text waves-effect waves-light btn red lighten-1">{% csrf_token %}
+      <select name = "filter">
+      <option value="by_mscore-">Max Score--</option>
+      </select>
+      <input type="submit"  value="Max Score -:+"/>
+    </form>
+  </div>
+{% if filter == "by_opr+" %}
+{% regroup team_list by team_mscore as team_list %}
+{% endif %} -->
+    <ul class="pagination">
+      {% if team_list.has_previous %}
+      <li class="waves-effect"><a href="?page=1">First</a></li>
+      <li class="waves-effect"><a href="?page={{ team_list.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+      {% endif %}
+      <li class="current">
+        <a>
+          Page
+          {{ team_list.number }}
+           of
+           {{ team_list.paginator.num_pages }}
+        </a>
+      </li>
+      {% if team_list.has_next %}
+      <li class="waves-effect"><a href="?page={{ team_list.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+      <li class="waves-effect"><a href="?page={{ team_list.paginator.num_pages }}">Last</a></li>
+      {% endif %}
+    </ul>
+
+    <table>
+      <tr>
+        <th>Team Number</th>
+        <th>OPR</th>
+        <th>Percentile</th>
+        <th>Max Score</th>
+        <th>Percentile</th>
+      </tr>
+      {% if team_list %} {% for team in team_list %}
+      <tr>
+        <td><a href="{% url 'teaminfo:detail' team %}">{{team}}</a></td>
+        <td>{{team.team_opr}}</td>
+        <td>{{team.team_opr_quantile}}%</td>
+        <td>{{team.team_mscore}}</td>
+        <td>{{team.team_mscore_quantile}}%</td>
+      </tr>
+      {% endfor %} {% else %}
+      <p>No teams are available.</p>
+      {% endif %}
+    </table>
+
+
+    <ul class="pagination">
+      {% if team_list.has_previous %}
+      <li class="waves-effect"><a href="?page=1">First</a></li>
+      <li class="waves-effect"><a href="?page={{ team_list.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+      {% endif %}
+      <li class="current">
+        <a>
+          Page
+          {{ team_list.number }}
+           of
+           {{ team_list.paginator.num_pages }}
+        </a>
+      </li>
+      {% if team_list.has_next %}
+      <li class="waves-effect"><a href="?page={{ team_list.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+      <li class="waves-effect"><a href="?page={{ team_list.paginator.num_pages }}">Last</a></li>
+      {% endif %}
+    </ul>
+
+    <br>
+  </div>
+
+
+  <footer class="page-footer red">
+    <div class="footer-copyright red darken-4">
+      <div class="container">
+        © 2018 Anish Kachinthaya
+        <a class="grey-text text-lighten-4 right" href="https://github.com/anishk23733" target="_blank">Github</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+  var elem = document.querySelector('.dropdown-trigger');
+var instance = M.Dropdown.init(elem, options);
+
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+</body>
+
+</html>

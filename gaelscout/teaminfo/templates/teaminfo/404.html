@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Team Not Found</title>
+    <link rel="shortcut icon" href="../../../static/gael.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet">
+    <link rel = "stylesheet" type = "text/css" href = "../../../static/main.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper red">
+        <div class="container">
+          <a class="brand-logo" href="{% url 'sri:index' %}">
+            GAELSCOUT</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li ><a class = "waves-effect waves-light" href="{% url 'sri:index' %}">Home</a></li>
+          <li ><a class = "waves-effect waves-light" href="{% url 'sri:index' %}">SRI</a></li>
+          <li><a class = "waves-effect waves-light" href="{% url 'teaminfo:index' %}">Team Index</a></li>
+          <li><a class = "waves-effect waves-light" href="{% url 'teaminfo:index' %}">Predictions</a></li>
+          <li><a class = "waves-effect waves-light" href="{% url 'teaminfo:division' %}">Division</a></li>
+        </ul>
+      </div>
+        <div class="nav-wrapper">
+      </div>
+    </nav>
+
+    <div class="container" style="min-height:450px">
+      <br>
+    <h1>404: Team not found.</h1>
+</div>
+    <footer class="page-footer red">
+    <div class="footer-copyright red darken-4">
+      <div class="container">
+      © 2018 Anish Kachinthaya
+      <a class="grey-text text-lighten-4 right" href="https://github.com/anishk23733" target="_blank">Github</a>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+  </body>
+</html>

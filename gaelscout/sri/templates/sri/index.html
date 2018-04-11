@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>GaelScout Index</title>
+  <link rel="shortcut icon" href="../../../static/gael.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet">
+  <link rel = "stylesheet" type = "text/css" href = "../../../static/main.css" />
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper red">
+      <div class="container">
+        <a class="brand-logo" href="{% url 'sri:index' %}">
+          GAELSCOUT</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li ><a class = "waves-effect waves-light" href="{% url 'sri:index' %}">Home</a></li>
+        <li ><a class = "waves-effect waves-light" href="{% url 'sri:index' %}">SRI</a></li>
+        <li><a class = "waves-effect waves-light" href="{% url 'teaminfo:index' %}">Team Index</a></li>
+        <li><a class = "waves-effect waves-light" href="{% url 'teaminfo:index' %}">Predictions</a></li>
+        <li><a class = "waves-effect waves-light" href="{% url 'teaminfo:division' %}">Division</a></li>
+      </ul>
+    </div>
+      <div class="nav-wrapper">
+    </div>
+  </nav>
+  <div class="container" style="min-height:450px">
+    <br>
+
+    <h4>{% load static %}
+<img src="{% static "gael.svg" %}" alt="My image" style="max-width: 200px; float: right;"/>Welcome to the GaelScout ITZ Team Index, made by team 5327B.</h4>
+
+
+  </div>
+
+  <footer class="page-footer red">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Who are we?</h5>
+        <p class="grey-text text-lighten-4">We are an experienced and completely student-run high school club whose members work on both real life engineering projects and participate in the VEX Robotics Competition.
+
+Around 6 years old now, our club takes pride in its members’ teamwork and problem solving skills. We also heavily emphasize the engineering design process and ensure that all members have knowledge of such engineering aspects through our yearly seminars.
+
+</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">More About Us</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="https://vexdb.io/teams/view/5327B" target="_blank">VexDB</a></li>
+          <li><a class="grey-text text-lighten-3" href="https://dhsrobotics.com" target="_blank">Our Website</a></li>
+          <li><a class="grey-text text-lighten-3" href="https://github.com/GaelForceRoboticsClub/VRC-Team-5327B" target="_blank">Robot Code</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright red darken-4">
+    <div class="container">
+    © 2018 Anish Kachinthaya
+    <a class="grey-text text-lighten-4 right" href="https://github.com/anishk23733" target="_blank">Github</a>
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+</body>
+
+</html>
