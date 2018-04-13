@@ -1,9 +1,9 @@
 from django.contrib.contenttypes.models import ContentType
 
 # List of deleted apps
-DEL_APPS = [""]
+DEL_APPS = ["teaminfo"]
 # List of deleted models (that are not in the app deleted) In lowercase!
-DEL_MODELS = ["Team"]
+DEL_MODELS = ["worldsTeams"]
 
 ct = ContentType.objects.all().order_by("app_label", "model")
 
